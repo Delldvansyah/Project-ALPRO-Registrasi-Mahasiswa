@@ -55,18 +55,6 @@ void input_data(){
     fclose(file);
 }
 
-void sort_data(struct student emp[],int num){
-    struct student temp;
-    int i,j;
-    for(i=1;i<num;i++){
-        temp = emp[i];
-        for(j=i-1;j>=0 && strcmp(emp[j].name,temp.name)>0;j--){
-            emp[j+1]=emp[j];
-        }
-    emp[j+1]=temp;
-    }
-}
-
 void show_data(){
 
     char buf[CHUNK];
