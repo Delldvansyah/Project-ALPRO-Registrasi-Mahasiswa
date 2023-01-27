@@ -55,9 +55,22 @@ void input_data(){
     fclose(file);
 }
 
+void sort_data(struct student emp[],int num){
+    struct student temp;
+    int i,j;
+    for(i=1;i<num;i++){
+        temp = emp[i];
+        for(j=i-1;j>=0 && strcmp(emp[j].name,temp.name)>0;j--){
+            emp[j+1]=emp[j];
+        }
+    emp[j+1]=temp;
+    }
+}
+
 void show_data(){
 
     char buf[CHUNK];
+    
     int compare_strings(const void *a, const void *b){
         const char *ia = *(const char **)a;
         const char *ib = *(const char **)b;
@@ -71,7 +84,7 @@ void show_data(){
 
     file = fopen("DataSiswa.txt", "r");
     if (file) {
-        while ((nread = fread(buf, 1, sizeof buf, file)) > 0) {
+        while ((nread = fread(buf, 1, sizeof buf, file)) > 0){
             buf[nread] = '\0';
             char *p = strtok(buf, "\n");
             while (p) {
@@ -252,9 +265,11 @@ int main(){
 
         switch(choice){
             case 1:
+                system("cls");
                 input_data();
             break;
             case 2:
+                system("cls");
                 do{
                     show_data();
 
@@ -271,23 +286,29 @@ int main(){
 
                     switch(choice_){
                     case 1:
+                        system("cls");
                         input_data();
                         break;
                     case 2:
+                        system("cls");
                         edit_data();
                         break;
                     case 3:
+                        system("cls");
                         delete_data();
                         break;
                     case 4:
+                        system("cls");
                         search_data();
                         break;
                     case 0:
+                        system("cls");
                         break; 
                     }   
                 }while(choice_!=0);
                 break;                       
         }
     }while(choice!=0);
+    system("cls");
     return 0;
 }
