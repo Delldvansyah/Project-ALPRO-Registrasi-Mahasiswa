@@ -212,9 +212,13 @@ void search_data(){
     int found = 0;
 
     fflush(stdin);
-    printf("Masukan Data Yang Ingin di Cari : ");
+    printf("Masukan Nama Yang Imgin di Cari : ");
     scanf("%[^\n]s", search_word);
     fflush(stdin);
+
+    for (int i = 0; i < strlen(search_word); i++) {
+        search_word[i] = tolower(search_word[i]);
+    }
 
     FILE *file;
     file = fopen("DataSiswa.txt", "r+");
@@ -224,6 +228,11 @@ void search_data(){
 
     while (fgets(buf, CHUNK, file) != NULL) {
         line_number++;
+
+        for (int i = 0; i < strlen(buf); i++) {
+            buf[i] = tolower(buf[i]);
+        }
+
         if (strstr(buf, search_word) != NULL) {
             found = 1;
             printf("Data Ditemukan (Line %d) : %s\n", line_number, buf);
