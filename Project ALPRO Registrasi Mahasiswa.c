@@ -5,6 +5,8 @@
 #include <ctype.h>
 #define CHUNK 1024
 
+//https://youtu.be/RNNyHWFl0UE//
+
 typedef struct student{
     char name[20];
     char school[20];
@@ -309,3 +311,5 @@ int main(){
     system("cls");
     return 0;
 }
+
+//https://youtu.be/RNNyHWFl0UE//
